@@ -11,21 +11,10 @@ public class FrontDesk {
         this.cart = new Cart();
     }
     
-    public void handleServiceRequest(String serviceType, Object... params) {
-        System.out.println("\nFrontDesk received request for: " + serviceType);
-        
-        switch (serviceType.toLowerCase()) {
-            case "valet":
-                valet.pickUpVehicle((String) params[0]);
-                break;
-            case "housekeeping":
-                houseKeeping.cleanRoom((int) params[0]);
-                break;
-            case "cart":
-                cart.requestCart((int) params[0]);
-                break;
-            default:
-            System.out.println("Unknown service requested.");
-        }
+    public void handleServiceRequest(String plateNumber, int roomNumber, int numberOfCarts) {
+        System.out.println("\nFrontDesk: Processing service request...");
+        valet.pickUpVehicle(plateNumber);
+        houseKeeping.cleanRoom(roomNumber);
+        cart.requestCart(numberOfCarts);
     }
 }
